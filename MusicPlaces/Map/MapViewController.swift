@@ -32,16 +32,15 @@ class MapViewController: UIViewController, MapDisplayLogic, KeyboardHandler {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addDismissHandler()
-        mapView.register(PlaceMarker.self,
-                         forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-        tableView.register(PlaceCell.nib, forCellReuseIdentifier: PlaceCell.identifier)
-        tableView.delegate = self
-        tableView.dataSource = self
+        configure()
+    }
 
-        addTextFieldDelegate()
+    func configure() {
+        addDismissHandler()
+        setDelegateAndDataSource()
         setUI()
         addKeyboardHandler()
+        registerNibs()
     }
 
     @IBAction func menuTapped(_ sender: UIButton) {
@@ -52,16 +51,6 @@ class MapViewController: UIViewController, MapDisplayLogic, KeyboardHandler {
         })
     }
 
-    func changeMenuState() {
-        let isShown = (menuContainerState == .shown)
-        menuContainerState = isShown ? .hidden : .shown
-    }
-
-    func changeTopState() {
-        let isKeyboardEnabled = (topContainerState == .keyboardEnabled)
-        topContainerState = isKeyboardEnabled ? .keyboardDisabled : .keyboardEnabled
-    }
-
     func addAnotationsToMap(_ viewModel: Map.SearchPlaces.ViewModel) {
         DispatchQueue.main.async {
             if viewModel.shouldResetAnnotations {
@@ -69,14 +58,6 @@ class MapViewController: UIViewController, MapDisplayLogic, KeyboardHandler {
             }
             self.mapView.addAnnotations(viewModel.annotations)
             self.tableView.reloadData()
-        }
-    }
-
-    func moveMapToPlace(_ place: Place) {
-        DispatchQueue.main.async {
-            let camera = MKMapCamera(lookingAtCenter: place.coordinate, fromDistance: 100000, pitch: 0, heading: 0)
-            self.mapView.setCamera(camera, animated: true)
-            self.mapView.selectAnnotation(place, animated: true)
         }
     }
 
@@ -92,10 +73,6 @@ class MapViewController: UIViewController, MapDisplayLogic, KeyboardHandler {
 }
 
 extension MapViewController: UITextFieldDelegate {
-    func addTextFieldDelegate() {
-        self.inputTextField.delegate = self
-    }
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         downloadLocations()
         dismissKeyboard()
@@ -123,6 +100,16 @@ extension MapViewController {
     func didChangeKeyboardVisibility() {
         changeTopState()
     }
+
+    func changeMenuState() {
+        let isShown = (menuContainerState == .shown)
+        menuContainerState = isShown ? .hidden : .shown
+    }
+
+    func changeTopState() {
+        let isKeyboardEnabled = (topContainerState == .keyboardEnabled)
+        topContainerState = isKeyboardEnabled ? .keyboardDisabled : .keyboardEnabled
+    }
 }
 
 extension MapViewController: UITableViewDataSource, UITableViewDelegate {
@@ -146,6 +133,14 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         moveMapToPlace(places[indexPath.row])
     }
+
+    private func moveMapToPlace(_ place: Place) {
+        DispatchQueue.main.async {
+            let camera = MKMapCamera(lookingAtCenter: place.coordinate, fromDistance: 100000, pitch: 0, heading: 0)
+            self.mapView.setCamera(camera, animated: true)
+            self.mapView.selectAnnotation(place, animated: true)
+        }
+    }
 }
 
 extension MapViewController {
@@ -167,6 +162,19 @@ extension MapViewController {
 
         searchRow.setShadow(shadowRadius: 10, shadowOpacity: 0.4)
         menuRow.setShadow(shadowRadius: 10, shadowOpacity: 0.5)
+    }
+
+    func registerNibs() {
+        mapView.register(PlaceMarker.self,
+                         forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        tableView.register(PlaceCell.nib, forCellReuseIdentifier: PlaceCell.identifier)
+    }
+
+    func setDelegateAndDataSource() {
+        inputTextField.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
+        mapView.showsUserLocation = true
     }
 }
 
