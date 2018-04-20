@@ -135,6 +135,7 @@
 		3B4A14092089A83800ADA84D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3B4A143A2089B1E700ADA84D /* Constatns.swift */,
 				3B4A14232089AC2400ADA84D /* Place.swift */,
 				3B4A14402089D75F00ADA84D /* CLLocationCoordinate2D+Decodable.swift */,
 				3B4A14422089D7A600ADA84D /* APIPlacesResponse.swift */,
@@ -156,7 +157,6 @@
 		3B4A140B2089A85B00ADA84D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				3B4A143A2089B1E700ADA84D /* Constatns.swift */,
 				3B4A141F2089ABFB00ADA84D /* APIProvider.swift */,
 				3B4A14382089B13E00ADA84D /* RequestURLFactory.swift */,
 				3B4A143C2089C61B00ADA84D /* Extensions.swift */,

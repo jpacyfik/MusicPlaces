@@ -18,7 +18,6 @@ protocol MapDataManager: class {
 
 class MapInteractor: MapBusinessLogic, MapDataManager {
     var presenter: (MapPresentationLogic)?
-    var worker: MapWorker?
 
     private let placesQueue: OperationQueue = OperationQueue()
 
@@ -27,20 +26,8 @@ class MapInteractor: MapBusinessLogic, MapDataManager {
     }
 
     func searchPlaces(_ request: Map.SearchPlaces.Request) {
-        let urlString = RequestURLFactory.generatePlaceURLString(request.searchPhrase, offset: 0)
-
-        let fetchOperation = FetchPlacesOperation(urlString, APIProvider())
-        let saveOperation = SavePlacesOperation(self)
-
-        fetchOperation.queuePriority = .low
-        saveOperation.queuePriority = .high
-
-        fetchOperation.completionBlock = {
-            saveOperation.placesToSave = fetchOperation.fetchedPlaces
-        }
-
-        saveOperation.addDependency(fetchOperation)
-        placesQueue.addOperations([fetchOperation, saveOperation], waitUntilFinished: false)
+        let worker = MapWorker()
+        worker.scheduleFetchOperation(request.searchPhrase, queue: self.placesQueue, offset: 0, mapManager: self)
     }
 
     func addPlaces(_ places: [Place]) {

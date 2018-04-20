@@ -9,5 +9,6 @@
 import Foundation
 
 struct Constants {
-    static let phraseToReplace = "%PHRASE%"
+    static let phraseToReplace: String = "%PHRASE%"
+    static let defaultRequestLimit: Int = 25
 }

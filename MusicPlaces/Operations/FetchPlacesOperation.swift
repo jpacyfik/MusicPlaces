@@ -9,14 +9,23 @@
 import Foundation
 
 final class FetchPlacesOperation: AppOperation {
-    private let urlString: String
     private let provider: APIProvider
+    private let offset: Int
+    private let searchPhrase: String
+
+    weak var parentQueue: OperationQueue?
+
+    private var urlString: String {
+        return RequestURLFactory.generatePlaceURLString(searchPhrase, offset: offset)
+    }
     
     var fetchedPlaces: [Place] = []
     
-    init(_ urlString: String, _ provider: APIProvider) {
-        self.urlString = urlString
+    init(_ searchPhrase: String, _ provider: APIProvider, _ operationQueue: OperationQueue, _ offset: Int = 0) {
         self.provider = provider
+        self.offset = offset
+        self.searchPhrase = searchPhrase
+        self.parentQueue = operationQueue
     }
     
     override func main() {
