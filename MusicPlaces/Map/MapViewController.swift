@@ -6,33 +6,10 @@
 //  Copyright (c) 2018 Jakub Pawelski. All rights reserved.
 //
 
-import UIKit
 import MapKit
 
 protocol MapDisplayLogic: class {
     func addAnotationsToMap(_ viewModel: Map.SearchPlaces.ViewModel)
-}
-
-enum TopContainerState {
-    case keyboardEnabled
-    case keyboardDisabled
-}
-
-enum MenuContainerState {
-    case hidden
-    case shown
-}
-
-func constraintConstant(_ menu: MenuContainerState, top: TopContainerState) {
-    switch (menu, top) {
-    case (.shown, .keyboardEnabled): break
-        // INITIAL + KEYBOARD HEIGHT + MENU CONTAINER
-    case (.shown, .keyboardDisabled): break
-        // INITIAL + MENU CONTAINER
-    case (.hidden, .keyboardEnabled):break
-        // INITIAL + KEYBOARD HEIGHT
-    case (.hidden, .keyboardDisabled):break
-    }   // INITIAL
 }
 
 class MapViewController: UIViewController, MapDisplayLogic, KeyboardHandler {
@@ -41,9 +18,13 @@ class MapViewController: UIViewController, MapDisplayLogic, KeyboardHandler {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var menuButton: UIView!
     @IBOutlet weak var searchRow: UIView!
+    @IBOutlet weak var bottomRowConstraint: NSLayoutConstraint!
+    @IBOutlet weak var menuRow: UIView!
+    @IBOutlet weak var tableView: UITableView!
 
     var interactor: MapBusinessLogic?
-    var router: (NSObjectProtocol & MapRoutingLogic & MapDataPassing)?
+    var topContainerState: TopContainerState = .keyboardDisabled
+    var menuContainerState: MenuContainerState = .hidden
 
     override var prefersStatusBarHidden: Bool {
         return true
@@ -54,6 +35,9 @@ class MapViewController: UIViewController, MapDisplayLogic, KeyboardHandler {
         addDismissHandler()
         mapView.register(PlaceMarker.self,
                          forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+        tableView.register(PlaceCell.nib, forCellReuseIdentifier: PlaceCell.identifier)
+        tableView.delegate = self
+        tableView.dataSource = self
 
         addTextFieldDelegate()
         setUI()
@@ -61,7 +45,21 @@ class MapViewController: UIViewController, MapDisplayLogic, KeyboardHandler {
     }
 
     @IBAction func menuTapped(_ sender: UIButton) {
-        // TODO
+        changeMenuState()
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.bottomConstraint.constant = MapKeyboardInfo.constraintConstant(self.menuContainerState, top: self.topContainerState)
+            self.view.layoutIfNeeded()
+        })
+    }
+
+    func changeMenuState() {
+        let isShown = (menuContainerState == .shown)
+        menuContainerState = isShown ? .hidden : .shown
+    }
+
+    func changeTopState() {
+        let isKeyboardEnabled = (topContainerState == .keyboardEnabled)
+        topContainerState = isKeyboardEnabled ? .keyboardDisabled : .keyboardEnabled
     }
 
     func addAnotationsToMap(_ viewModel: Map.SearchPlaces.ViewModel) {
@@ -70,6 +68,7 @@ class MapViewController: UIViewController, MapDisplayLogic, KeyboardHandler {
                 self.mapView.removeAllAnnotations()
             }
             self.mapView.addAnnotations(viewModel.annotations)
+            self.tableView.reloadData()
         }
     }
 
@@ -113,11 +112,8 @@ extension MapViewController {
         self.inputTextField.resignFirstResponder()
     }
 
-    func setUI() {
-        searchRow.setCorner(radius: 24)
-        menuButton.setCorner(radius: 24)
-
-        searchRow.setShadow(shadowRadius: 10, shadowOpacity: 0.4)
+    func didChangeKeyboardVisibility() {
+        changeTopState()
     }
 }
 
@@ -126,14 +122,20 @@ extension MapViewController {
         let viewController = self
         let interactor = MapInteractor()
         let presenter = MapPresenter()
-        let router = MapRouter()
         viewController.interactor = interactor
-        viewController.router = router
         interactor.presenter = presenter
         presenter.viewController = viewController
-        router.viewController = viewController
-
         interactor.configureQueue()
+    }
+
+    func setUI() {
+        searchRow.setCorner(radius: 24)
+        menuButton.setCorner(radius: 24)
+        menuRow.setCorner(radius: 14)
+        tableView.setCorner(radius: 14)
+
+        searchRow.setShadow(shadowRadius: 10, shadowOpacity: 0.4)
+        menuRow.setShadow(shadowRadius: 10, shadowOpacity: 0.5)
     }
 }
 
@@ -141,5 +143,24 @@ extension MapViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         mapView.removeAllAnnotations()
+    }
+}
+
+extension MapViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PlaceCell.identifier) as? PlaceCell else {
+            fatalError()
+        }
+
+        cell.setCell(places[indexPath.row])
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return places.count
+    }
+
+    var places: [Place] {
+        return (mapView.annotations as? [Place] ?? [])
     }
 }

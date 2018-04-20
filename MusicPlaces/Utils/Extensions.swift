@@ -36,11 +36,10 @@ extension UIViewController {
         guard let handler = self as? KeyboardHandler else { fatalError("PROTOCOL ERRROR") }
         guard let userInfo = notification.userInfo else { return }
         guard let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue else { return }
+        MapKeyboardInfo.keyboardHeight = keyboardFrame.height
 
-        let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
-
-        handler.bottomConstraint.constant = isKeyboardShowing ? -keyboardFrame.height : 0
-
+        handler.didChangeKeyboardVisibility()
+        handler.bottomConstraint.constant = MapKeyboardInfo.constraintConstant(handler.menuContainerState, top: handler.topContainerState)
         UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         })
@@ -52,8 +51,22 @@ extension UIViewController {
     }
 }
 
+enum TopContainerState {
+    case keyboardEnabled
+    case keyboardDisabled
+}
+
+enum MenuContainerState {
+    case hidden
+    case shown
+}
+
 protocol KeyboardHandler {
     weak var bottomConstraint: NSLayoutConstraint! { get set }
+    var topContainerState: TopContainerState { get set }
+    var menuContainerState: MenuContainerState { get set }
+
+    func didChangeKeyboardVisibility()
 }
 
 extension MKMapView {
@@ -61,3 +74,31 @@ extension MKMapView {
         self.removeAnnotations(self.annotations)
     }
 }
+
+struct MapKeyboardInfo {
+    static var keyboardHeight: CGFloat = 0
+
+    static func constraintConstant(_ menu: MenuContainerState, top: TopContainerState) -> CGFloat {
+        switch (menu, top) {
+        case (.shown, .keyboardEnabled):
+            return -(200 + MapKeyboardInfo.keyboardHeight)
+        case (.shown, .keyboardDisabled):
+            return -(200)
+        case (.hidden, .keyboardEnabled):
+            return -(MapKeyboardInfo.keyboardHeight)
+        case (.hidden, .keyboardDisabled):
+            return 0
+        }
+    }
+}
+
+extension UITableViewCell {
+    static var identifier: String {
+        return String(describing: self)
+    }
+
+    static var nib: UINib {
+        return UINib(nibName: self.identifier, bundle: nil)
+    }
+}
+
