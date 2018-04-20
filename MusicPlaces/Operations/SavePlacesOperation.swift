@@ -12,9 +12,10 @@ final class SavePlacesOperation: AppOperation {
     weak var mapManager: MapDataManager?
     
     var placesToSave: [Place] = []
+    var shouldRemoveAllAnnotations: Bool = false
     
     override func main() {
-        self.mapManager?.addPlaces(placesToSave)
+        self.mapManager?.addPlaces(placesToSave, shouldRemoveAllAnnotations)
         self.executing(false)
         self.finish(true)
     }

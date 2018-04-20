@@ -19,6 +19,7 @@ class MapWorker {
         fetchOperation.completionBlock = {
             saveOperation.placesToSave = fetchOperation.fetchedPlaces
             saveOperation.mapManager = fetchOperation.mapManager
+            saveOperation.shouldRemoveAllAnnotations = fetchOperation.shouldRemoveAllAnnotations
         }
 
         saveOperation.addDependency(fetchOperation)

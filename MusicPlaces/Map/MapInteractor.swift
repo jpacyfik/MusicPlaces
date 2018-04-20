@@ -13,11 +13,11 @@ protocol MapBusinessLogic {
 }
 
 protocol MapDataManager: class {
-    func addPlaces(_ places: [Place])
+    func addPlaces(_ places: [Place], _ shouldRemoveAllAnnotations: Bool)
 }
 
 class MapInteractor: MapBusinessLogic, MapDataManager {
-    var presenter: (MapPresentationLogic)?
+    var presenter: MapPresentationLogic?
 
     private let placesQueue: OperationQueue = OperationQueue()
 
@@ -30,8 +30,8 @@ class MapInteractor: MapBusinessLogic, MapDataManager {
         worker.scheduleFetchOperation(request.searchPhrase, queue: self.placesQueue, offset: 0, mapManager: self)
     }
 
-    func addPlaces(_ places: [Place]) {
-        let response = Map.SearchPlaces.Response(places: places)
+    func addPlaces(_ places: [Place], _ shouldRemoveAllAnnotations: Bool) {
+        let response = Map.SearchPlaces.Response(places: places, shouldResetAnnotations: shouldRemoveAllAnnotations)
         presenter?.addPlacesToDataSource(response)
     }
 }

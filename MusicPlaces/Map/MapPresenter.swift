@@ -16,7 +16,7 @@ class MapPresenter: MapPresentationLogic {
     weak var viewController: MapDisplayLogic?
 
     func addPlacesToDataSource(_ response: Map.SearchPlaces.Response) {
-        let viewModel = Map.SearchPlaces.ViewModel(annotations: response.places)
+        let viewModel = Map.SearchPlaces.ViewModel(shouldResetAnnotations: response.shouldResetAnnotations, annotations: response.places)
         viewController?.addAnotationsToMap(viewModel)
     }
 }

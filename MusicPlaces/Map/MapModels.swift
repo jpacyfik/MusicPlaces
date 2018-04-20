@@ -16,9 +16,11 @@ enum Map {
 
         struct Response {
             let places: [Place]
+            let shouldResetAnnotations: Bool
         }
 
         struct ViewModel {
+            let shouldResetAnnotations: Bool
             let annotations: [MKAnnotation]
         }
     }

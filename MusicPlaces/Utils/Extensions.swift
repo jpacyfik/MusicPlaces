@@ -6,7 +6,7 @@
 //  Copyright © 2018 Jakub Pawelski. All rights reserved.
 //
 
-import UIKit
+import MapKit
 
 extension UITextField {
     var textWithEmptyStringValidation: String {
@@ -54,4 +54,10 @@ extension UIViewController {
 
 protocol KeyboardHandler {
     weak var bottomConstraint: NSLayoutConstraint! { get set }
+}
+
+extension MKMapView {
+    func removeAllAnnotations() {
+        self.removeAnnotations(self.annotations)
+    }
 }

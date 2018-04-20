@@ -65,7 +65,12 @@ class MapViewController: UIViewController, MapDisplayLogic, KeyboardHandler {
     }
 
     func addAnotationsToMap(_ viewModel: Map.SearchPlaces.ViewModel) {
-        mapView.addAnnotations(viewModel.annotations)
+        DispatchQueue.main.async {
+            if viewModel.shouldResetAnnotations {
+                self.mapView.removeAllAnnotations()
+            }
+            self.mapView.addAnnotations(viewModel.annotations)
+        }
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -135,6 +140,6 @@ extension MapViewController {
 extension MapViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // TODO
+        mapView.removeAllAnnotations()
     }
 }

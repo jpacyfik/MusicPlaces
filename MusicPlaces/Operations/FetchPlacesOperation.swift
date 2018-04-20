@@ -19,6 +19,8 @@ final class FetchPlacesOperation: AppOperation {
     private var urlString: String {
         return RequestURLFactory.generatePlaceURLString(searchPhrase, offset: offset)
     }
+
+    var shouldRemoveAllAnnotations: Bool = false
     
     var fetchedPlaces: [Place] = []
     
@@ -48,7 +50,7 @@ final class FetchPlacesOperation: AppOperation {
                 let decoder = JSONDecoder()
                 do {
                     let response = try decoder.decode(APIPlacesResponse.self, from: fetchedData)
-                    print("DOWNLOADED: OFFSET:\(response.offset)")
+                    self?.shouldRemoveAllAnnotations = (response.offset == 0)
                     self?.generateMoreRequestsIfNeeded(response)
                     self?.fetchedPlaces = response.places
                     self?.executing(false)
