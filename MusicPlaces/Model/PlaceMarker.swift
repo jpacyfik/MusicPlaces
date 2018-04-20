@@ -12,7 +12,7 @@ class PlaceMarker: MKMarkerAnnotationView {
     override var annotation: MKAnnotation? {
         willSet {
             canShowCallout = true
-            calloutOffset = CGPoint(x: -5, y: 5)
+            calloutOffset = CGPoint(x: 0, y: 0)
 
             let label = UILabel()
             label.text = "MP"
