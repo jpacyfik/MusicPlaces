@@ -64,7 +64,7 @@ final class FetchPlacesOperation: AppOperation {
     }
 
     func generateMoreRequestsIfNeeded(_ response: APIPlacesResponse) {
-        guard response.count > Constants.defaultRequestLimit && response.offset == 0 else {
+        guard response.count > AppSettings.defaultRequestLimit && response.offset == 0 else {
             // ALL PLACES DOWNLOADED ON INITIAL FETCH
             return
         }

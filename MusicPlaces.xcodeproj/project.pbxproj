@@ -24,7 +24,7 @@
 		3B4A14202089ABFB00ADA84D /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A141F2089ABFB00ADA84D /* APIProvider.swift */; };
 		3B4A14242089AC2400ADA84D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A14232089AC2400ADA84D /* Place.swift */; };
 		3B4A14392089B13E00ADA84D /* RequestURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A14382089B13E00ADA84D /* RequestURLFactory.swift */; };
-		3B4A143B2089B1E700ADA84D /* Constatns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A143A2089B1E700ADA84D /* Constatns.swift */; };
+		3B4A143B2089B1E700ADA84D /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A143A2089B1E700ADA84D /* AppSettings.swift */; };
 		3B4A143D2089C61B00ADA84D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A143C2089C61B00ADA84D /* Extensions.swift */; };
 		3B4A143F2089D73F00ADA84D /* FailableDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A143E2089D73F00ADA84D /* FailableDecodable.swift */; };
 		3B4A14412089D75F00ADA84D /* CLLocationCoordinate2D+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A14402089D75F00ADA84D /* CLLocationCoordinate2D+Decodable.swift */; };
@@ -64,7 +64,7 @@
 		3B4A141F2089ABFB00ADA84D /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		3B4A14232089AC2400ADA84D /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		3B4A14382089B13E00ADA84D /* RequestURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestURLFactory.swift; sourceTree = "<group>"; };
-		3B4A143A2089B1E700ADA84D /* Constatns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constatns.swift; sourceTree = "<group>"; };
+		3B4A143A2089B1E700ADA84D /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		3B4A143C2089C61B00ADA84D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3B4A143E2089D73F00ADA84D /* FailableDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableDecodable.swift; sourceTree = "<group>"; };
 		3B4A14402089D75F00ADA84D /* CLLocationCoordinate2D+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Decodable.swift"; sourceTree = "<group>"; };
@@ -117,6 +117,7 @@
 				3B4A140B2089A85B00ADA84D /* Utils */,
 				3B4A14372089B06100ADA84D /* Views */,
 				3B4A13E92089A81500ADA84D /* AppDelegate.swift */,
+				3B4A143A2089B1E700ADA84D /* AppSettings.swift */,
 				3B4A13F02089A81500ADA84D /* Assets.xcassets */,
 				3B4A13F52089A81500ADA84D /* Info.plist */,
 			);
@@ -135,7 +136,6 @@
 		3B4A14092089A83800ADA84D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3B4A143A2089B1E700ADA84D /* Constatns.swift */,
 				3B4A14232089AC2400ADA84D /* Place.swift */,
 				3B4A14402089D75F00ADA84D /* CLLocationCoordinate2D+Decodable.swift */,
 				3B4A14422089D7A600ADA84D /* APIPlacesResponse.swift */,
@@ -307,7 +307,7 @@
 				3B4A14202089ABFB00ADA84D /* APIProvider.swift in Sources */,
 				3B4A14142089AB0F00ADA84D /* MapModels.swift in Sources */,
 				3B4A14152089AB0F00ADA84D /* MapPresenter.swift in Sources */,
-				3B4A143B2089B1E700ADA84D /* Constatns.swift in Sources */,
+				3B4A143B2089B1E700ADA84D /* AppSettings.swift in Sources */,
 				3B4A14432089D7A600ADA84D /* APIPlacesResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

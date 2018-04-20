@@ -26,7 +26,7 @@ final class RequestURLFactory {
         return "&limit=\(limit.description)"
     }
 
-    static func generatePlaceURLString(_ searchPhrase: String, limit: Int = Constants.defaultRequestLimit, offset: Int = 0) -> String {
+    static func generatePlaceURLString(_ searchPhrase: String, limit: Int = AppSettings.defaultRequestLimit, offset: Int = 0) -> String {
         return (baseURLString + places + getQueryPhraseSuffix(searchPhrase) + getLimitParam(limit) + getOffsetParam(offset) + jsonFormat)
     }
 }

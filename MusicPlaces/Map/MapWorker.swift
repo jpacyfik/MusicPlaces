@@ -37,7 +37,7 @@ class MapWorker {
     private func calculateOffsets(_ resultCount: Int) -> [Int] {
         var offsets: [Int] = []
 
-        let numberOfOffsetsDobule = (Double(resultCount) / Double(Constants.defaultRequestLimit))
+        let numberOfOffsetsDobule = (Double(resultCount) / Double(AppSettings.defaultRequestLimit))
         let numberOfOffsets = Int(numberOfOffsetsDobule.rounded(.up))
 
         guard numberOfOffsets != 0 else {
@@ -45,7 +45,7 @@ class MapWorker {
         }
 
         for number in 1...(numberOfOffsets - 1) {
-            let currentOffset = (number * Constants.defaultRequestLimit)
+            let currentOffset = (number * AppSettings.defaultRequestLimit)
             offsets.append(currentOffset)
         }
 
