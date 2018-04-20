@@ -1,0 +1,559 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3B4A13EA2089A81500ADA84D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A13E92089A81500ADA84D /* AppDelegate.swift */; };
+		3B4A13EF2089A81500ADA84D /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B4A13ED2089A81500ADA84D /* Map.storyboard */; };
+		3B4A13F12089A81500ADA84D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B4A13F02089A81500ADA84D /* Assets.xcassets */; };
+		3B4A13F42089A81500ADA84D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B4A13F22089A81500ADA84D /* LaunchScreen.storyboard */; };
+		3B4A13FF2089A81600ADA84D /* MusicPlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A13FE2089A81600ADA84D /* MusicPlacesTests.swift */; };
+		3B4A14132089AB0F00ADA84D /* MapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A140D2089AB0F00ADA84D /* MapInteractor.swift */; };
+		3B4A14142089AB0F00ADA84D /* MapModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A140E2089AB0F00ADA84D /* MapModels.swift */; };
+		3B4A14152089AB0F00ADA84D /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A140F2089AB0F00ADA84D /* MapPresenter.swift */; };
+		3B4A14162089AB0F00ADA84D /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A14102089AB0F00ADA84D /* MapRouter.swift */; };
+		3B4A14172089AB0F00ADA84D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A14112089AB0F00ADA84D /* MapViewController.swift */; };
+		3B4A14182089AB0F00ADA84D /* MapWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A14122089AB0F00ADA84D /* MapWorker.swift */; };
+		3B4A141A2089AB4600ADA84D /* FetchPlacesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A14192089AB4600ADA84D /* FetchPlacesOperation.swift */; };
+		3B4A141C2089AB5900ADA84D /* SavePlacesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A141B2089AB5900ADA84D /* SavePlacesOperation.swift */; };
+		3B4A141E2089AB6000ADA84D /* AppOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A141D2089AB6000ADA84D /* AppOperation.swift */; };
+		3B4A14202089ABFB00ADA84D /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A141F2089ABFB00ADA84D /* APIProvider.swift */; };
+		3B4A14242089AC2400ADA84D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A14232089AC2400ADA84D /* Place.swift */; };
+		3B4A14392089B13E00ADA84D /* RequestURLFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A14382089B13E00ADA84D /* RequestURLFactory.swift */; };
+		3B4A143B2089B1E700ADA84D /* Constatns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A143A2089B1E700ADA84D /* Constatns.swift */; };
+		3B4A143D2089C61B00ADA84D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A143C2089C61B00ADA84D /* Extensions.swift */; };
+		3B4A143F2089D73F00ADA84D /* FailableDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A143E2089D73F00ADA84D /* FailableDecodable.swift */; };
+		3B4A14412089D75F00ADA84D /* CLLocationCoordinate2D+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A14402089D75F00ADA84D /* CLLocationCoordinate2D+Decodable.swift */; };
+		3B4A14432089D7A600ADA84D /* APIPlacesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A14422089D7A600ADA84D /* APIPlacesResponse.swift */; };
+		3B4A1445208A124800ADA84D /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A1444208A124800ADA84D /* PlaceMarker.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3B4A13FB2089A81600ADA84D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B4A13DE2089A81500ADA84D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B4A13E52089A81500ADA84D;
+			remoteInfo = MusicPlaces;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3B4A13E62089A81500ADA84D /* MusicPlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4A13E92089A81500ADA84D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3B4A13EE2089A81500ADA84D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Map.storyboard; sourceTree = "<group>"; };
+		3B4A13F02089A81500ADA84D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3B4A13F32089A81500ADA84D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3B4A13F52089A81500ADA84D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B4A13FA2089A81600ADA84D /* MusicPlacesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicPlacesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4A13FE2089A81600ADA84D /* MusicPlacesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlacesTests.swift; sourceTree = "<group>"; };
+		3B4A14002089A81600ADA84D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B4A140D2089AB0F00ADA84D /* MapInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInteractor.swift; sourceTree = "<group>"; };
+		3B4A140E2089AB0F00ADA84D /* MapModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModels.swift; sourceTree = "<group>"; };
+		3B4A140F2089AB0F00ADA84D /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+		3B4A14102089AB0F00ADA84D /* MapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
+		3B4A14112089AB0F00ADA84D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		3B4A14122089AB0F00ADA84D /* MapWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapWorker.swift; sourceTree = "<group>"; };
+		3B4A14192089AB4600ADA84D /* FetchPlacesOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPlacesOperation.swift; sourceTree = "<group>"; };
+		3B4A141B2089AB5900ADA84D /* SavePlacesOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePlacesOperation.swift; sourceTree = "<group>"; };
+		3B4A141D2089AB6000ADA84D /* AppOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppOperation.swift; sourceTree = "<group>"; };
+		3B4A141F2089ABFB00ADA84D /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
+		3B4A14232089AC2400ADA84D /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		3B4A14382089B13E00ADA84D /* RequestURLFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestURLFactory.swift; sourceTree = "<group>"; };
+		3B4A143A2089B1E700ADA84D /* Constatns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constatns.swift; sourceTree = "<group>"; };
+		3B4A143C2089C61B00ADA84D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3B4A143E2089D73F00ADA84D /* FailableDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailableDecodable.swift; sourceTree = "<group>"; };
+		3B4A14402089D75F00ADA84D /* CLLocationCoordinate2D+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Decodable.swift"; sourceTree = "<group>"; };
+		3B4A14422089D7A600ADA84D /* APIPlacesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPlacesResponse.swift; sourceTree = "<group>"; };
+		3B4A1444208A124800ADA84D /* PlaceMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3B4A13E32089A81500ADA84D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B4A13F72089A81600ADA84D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B4A13DD2089A81500ADA84D = {
+			isa = PBXGroup;
+			children = (
+				3B4A13E82089A81500ADA84D /* MusicPlaces */,
+				3B4A13FD2089A81600ADA84D /* MusicPlacesTests */,
+				3B4A13E72089A81500ADA84D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3B4A13E72089A81500ADA84D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B4A13E62089A81500ADA84D /* MusicPlaces.app */,
+				3B4A13FA2089A81600ADA84D /* MusicPlacesTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B4A13E82089A81500ADA84D /* MusicPlaces */ = {
+			isa = PBXGroup;
+			children = (
+				3B4A140C2089A87B00ADA84D /* Map */,
+				3B4A14092089A83800ADA84D /* Model */,
+				3B4A140A2089A84300ADA84D /* Operations */,
+				3B4A140B2089A85B00ADA84D /* Utils */,
+				3B4A14372089B06100ADA84D /* Views */,
+				3B4A13E92089A81500ADA84D /* AppDelegate.swift */,
+				3B4A13F02089A81500ADA84D /* Assets.xcassets */,
+				3B4A13F52089A81500ADA84D /* Info.plist */,
+			);
+			path = MusicPlaces;
+			sourceTree = "<group>";
+		};
+		3B4A13FD2089A81600ADA84D /* MusicPlacesTests */ = {
+			isa = PBXGroup;
+			children = (
+				3B4A13FE2089A81600ADA84D /* MusicPlacesTests.swift */,
+				3B4A14002089A81600ADA84D /* Info.plist */,
+			);
+			path = MusicPlacesTests;
+			sourceTree = "<group>";
+		};
+		3B4A14092089A83800ADA84D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B4A14232089AC2400ADA84D /* Place.swift */,
+				3B4A14402089D75F00ADA84D /* CLLocationCoordinate2D+Decodable.swift */,
+				3B4A14422089D7A600ADA84D /* APIPlacesResponse.swift */,
+				3B4A1444208A124800ADA84D /* PlaceMarker.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3B4A140A2089A84300ADA84D /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				3B4A14192089AB4600ADA84D /* FetchPlacesOperation.swift */,
+				3B4A141B2089AB5900ADA84D /* SavePlacesOperation.swift */,
+				3B4A141D2089AB6000ADA84D /* AppOperation.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		3B4A140B2089A85B00ADA84D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3B4A143A2089B1E700ADA84D /* Constatns.swift */,
+				3B4A141F2089ABFB00ADA84D /* APIProvider.swift */,
+				3B4A14382089B13E00ADA84D /* RequestURLFactory.swift */,
+				3B4A143C2089C61B00ADA84D /* Extensions.swift */,
+				3B4A143E2089D73F00ADA84D /* FailableDecodable.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3B4A140C2089A87B00ADA84D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				3B4A14112089AB0F00ADA84D /* MapViewController.swift */,
+				3B4A140D2089AB0F00ADA84D /* MapInteractor.swift */,
+				3B4A140E2089AB0F00ADA84D /* MapModels.swift */,
+				3B4A140F2089AB0F00ADA84D /* MapPresenter.swift */,
+				3B4A14102089AB0F00ADA84D /* MapRouter.swift */,
+				3B4A14122089AB0F00ADA84D /* MapWorker.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		3B4A14372089B06100ADA84D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3B4A13ED2089A81500ADA84D /* Map.storyboard */,
+				3B4A13F22089A81500ADA84D /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3B4A13E52089A81500ADA84D /* MusicPlaces */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B4A14032089A81600ADA84D /* Build configuration list for PBXNativeTarget "MusicPlaces" */;
+			buildPhases = (
+				3B4A13E22089A81500ADA84D /* Sources */,
+				3B4A13E32089A81500ADA84D /* Frameworks */,
+				3B4A13E42089A81500ADA84D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MusicPlaces;
+			productName = MusicPlaces;
+			productReference = 3B4A13E62089A81500ADA84D /* MusicPlaces.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3B4A13F92089A81600ADA84D /* MusicPlacesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B4A14062089A81600ADA84D /* Build configuration list for PBXNativeTarget "MusicPlacesTests" */;
+			buildPhases = (
+				3B4A13F62089A81600ADA84D /* Sources */,
+				3B4A13F72089A81600ADA84D /* Frameworks */,
+				3B4A13F82089A81600ADA84D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3B4A13FC2089A81600ADA84D /* PBXTargetDependency */,
+			);
+			name = MusicPlacesTests;
+			productName = MusicPlacesTests;
+			productReference = 3B4A13FA2089A81600ADA84D /* MusicPlacesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B4A13DE2089A81500ADA84D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Jakub Pawelski";
+				TargetAttributes = {
+					3B4A13E52089A81500ADA84D = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					3B4A13F92089A81600ADA84D = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 3B4A13E52089A81500ADA84D;
+					};
+				};
+			};
+			buildConfigurationList = 3B4A13E12089A81500ADA84D /* Build configuration list for PBXProject "MusicPlaces" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3B4A13DD2089A81500ADA84D;
+			productRefGroup = 3B4A13E72089A81500ADA84D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3B4A13E52089A81500ADA84D /* MusicPlaces */,
+				3B4A13F92089A81600ADA84D /* MusicPlacesTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B4A13E42089A81500ADA84D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B4A13F42089A81500ADA84D /* LaunchScreen.storyboard in Resources */,
+				3B4A13F12089A81500ADA84D /* Assets.xcassets in Resources */,
+				3B4A13EF2089A81500ADA84D /* Map.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B4A13F82089A81600ADA84D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3B4A13E22089A81500ADA84D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B4A141A2089AB4600ADA84D /* FetchPlacesOperation.swift in Sources */,
+				3B4A13EA2089A81500ADA84D /* AppDelegate.swift in Sources */,
+				3B4A141C2089AB5900ADA84D /* SavePlacesOperation.swift in Sources */,
+				3B4A14242089AC2400ADA84D /* Place.swift in Sources */,
+				3B4A14172089AB0F00ADA84D /* MapViewController.swift in Sources */,
+				3B4A143F2089D73F00ADA84D /* FailableDecodable.swift in Sources */,
+				3B4A14182089AB0F00ADA84D /* MapWorker.swift in Sources */,
+				3B4A1445208A124800ADA84D /* PlaceMarker.swift in Sources */,
+				3B4A14392089B13E00ADA84D /* RequestURLFactory.swift in Sources */,
+				3B4A14412089D75F00ADA84D /* CLLocationCoordinate2D+Decodable.swift in Sources */,
+				3B4A141E2089AB6000ADA84D /* AppOperation.swift in Sources */,
+				3B4A14132089AB0F00ADA84D /* MapInteractor.swift in Sources */,
+				3B4A14162089AB0F00ADA84D /* MapRouter.swift in Sources */,
+				3B4A143D2089C61B00ADA84D /* Extensions.swift in Sources */,
+				3B4A14202089ABFB00ADA84D /* APIProvider.swift in Sources */,
+				3B4A14142089AB0F00ADA84D /* MapModels.swift in Sources */,
+				3B4A14152089AB0F00ADA84D /* MapPresenter.swift in Sources */,
+				3B4A143B2089B1E700ADA84D /* Constatns.swift in Sources */,
+				3B4A14432089D7A600ADA84D /* APIPlacesResponse.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3B4A13F62089A81600ADA84D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B4A13FF2089A81600ADA84D /* MusicPlacesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3B4A13FC2089A81600ADA84D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B4A13E52089A81500ADA84D /* MusicPlaces */;
+			targetProxy = 3B4A13FB2089A81600ADA84D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3B4A13ED2089A81500ADA84D /* Map.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B4A13EE2089A81500ADA84D /* Base */,
+			);
+			name = Map.storyboard;
+			sourceTree = "<group>";
+		};
+		3B4A13F22089A81500ADA84D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B4A13F32089A81500ADA84D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3B4A14012089A81600ADA84D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3B4A14022089A81600ADA84D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3B4A14042089A81600ADA84D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SYYZCRA5E4;
+				INFOPLIST_FILE = MusicPlaces/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jakubpawelski.MusicPlaces;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3B4A14052089A81600ADA84D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SYYZCRA5E4;
+				INFOPLIST_FILE = MusicPlaces/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jakubpawelski.MusicPlaces;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		3B4A14072089A81600ADA84D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SYYZCRA5E4;
+				INFOPLIST_FILE = MusicPlacesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jakubpawelski.MusicPlacesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MusicPlaces.app/MusicPlaces";
+			};
+			name = Debug;
+		};
+		3B4A14082089A81600ADA84D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SYYZCRA5E4;
+				INFOPLIST_FILE = MusicPlacesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jakubpawelski.MusicPlacesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MusicPlaces.app/MusicPlaces";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B4A13E12089A81500ADA84D /* Build configuration list for PBXProject "MusicPlaces" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B4A14012089A81600ADA84D /* Debug */,
+				3B4A14022089A81600ADA84D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B4A14032089A81600ADA84D /* Build configuration list for PBXNativeTarget "MusicPlaces" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B4A14042089A81600ADA84D /* Debug */,
+				3B4A14052089A81600ADA84D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B4A14062089A81600ADA84D /* Build configuration list for PBXNativeTarget "MusicPlacesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B4A14072089A81600ADA84D /* Debug */,
+				3B4A14082089A81600ADA84D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3B4A13DE2089A81500ADA84D /* Project object */;
+}
