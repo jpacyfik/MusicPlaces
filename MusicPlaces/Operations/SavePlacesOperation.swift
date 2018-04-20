@@ -9,17 +9,12 @@
 import Foundation
 
 final class SavePlacesOperation: AppOperation {
-    private weak var dataStore: MapDataManager?
+    weak var mapManager: MapDataManager?
     
     var placesToSave: [Place] = []
     
-    init(_ dataStore: MapDataManager) {
-        self.dataStore = dataStore
-    }
-    
     override func main() {
-        print("CALLED")
-        self.dataStore?.addPlaces(placesToSave)
+        self.mapManager?.addPlaces(placesToSave)
         self.executing(false)
         self.finish(true)
     }

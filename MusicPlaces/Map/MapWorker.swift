@@ -10,14 +10,15 @@ import UIKit
 
 class MapWorker {
     func scheduleFetchOperation(_ searchPhrase: String, queue: OperationQueue, offset: Int, mapManager: MapDataManager) {
-        let fetchOperation = FetchPlacesOperation(searchPhrase, APIProvider(), queue)
-        let saveOperation = SavePlacesOperation(mapManager)
+        let fetchOperation = FetchPlacesOperation(searchPhrase, APIProvider(), queue, mapManager, offset)
+        let saveOperation = SavePlacesOperation()
 
         fetchOperation.queuePriority = .low
         saveOperation.queuePriority = .high
 
         fetchOperation.completionBlock = {
             saveOperation.placesToSave = fetchOperation.fetchedPlaces
+            saveOperation.mapManager = fetchOperation.mapManager
         }
 
         saveOperation.addDependency(fetchOperation)
@@ -37,6 +38,10 @@ class MapWorker {
 
         let numberOfOffsetsDobule = (Double(resultCount) / Double(Constants.defaultRequestLimit))
         let numberOfOffsets = Int(numberOfOffsetsDobule.rounded(.up))
+
+        guard numberOfOffsets != 0 else {
+            return []
+        }
 
         for number in 1...(numberOfOffsets - 1) {
             let currentOffset = (number * Constants.defaultRequestLimit)

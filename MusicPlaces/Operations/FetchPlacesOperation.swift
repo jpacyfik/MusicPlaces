@@ -14,6 +14,7 @@ final class FetchPlacesOperation: AppOperation {
     private let searchPhrase: String
 
     weak var parentQueue: OperationQueue?
+    weak var mapManager: MapDataManager?
 
     private var urlString: String {
         return RequestURLFactory.generatePlaceURLString(searchPhrase, offset: offset)
@@ -21,11 +22,12 @@ final class FetchPlacesOperation: AppOperation {
     
     var fetchedPlaces: [Place] = []
     
-    init(_ searchPhrase: String, _ provider: APIProvider, _ operationQueue: OperationQueue, _ offset: Int = 0) {
+    init(_ searchPhrase: String, _ provider: APIProvider, _ operationQueue: OperationQueue, _ mapManager: MapDataManager?, _ offset: Int = 0) {
         self.provider = provider
         self.offset = offset
         self.searchPhrase = searchPhrase
         self.parentQueue = operationQueue
+        self.mapManager = mapManager
     }
     
     override func main() {
@@ -46,6 +48,8 @@ final class FetchPlacesOperation: AppOperation {
                 let decoder = JSONDecoder()
                 do {
                     let response = try decoder.decode(APIPlacesResponse.self, from: fetchedData)
+                    print("DOWNLOADED: OFFSET:\(response.offset)")
+                    self?.generateMoreRequestsIfNeeded(response)
                     self?.fetchedPlaces = response.places
                     self?.executing(false)
                     self?.finish(true)
@@ -55,5 +59,18 @@ final class FetchPlacesOperation: AppOperation {
                 }
             }
         }
+    }
+
+    func generateMoreRequestsIfNeeded(_ response: APIPlacesResponse) {
+        guard response.count > Constants.defaultRequestLimit && response.offset == 0 else {
+            // ALL PLACES DOWNLOADED ON INITIAL FETCH
+            return
+        }
+
+        guard let mapManager = mapManager, let queue = parentQueue else {
+            return
+        }
+
+        MapWorker().createOffsetRequests(response.count, searchPhrase: searchPhrase, queue: queue, mapManager: mapManager)
     }
 }
