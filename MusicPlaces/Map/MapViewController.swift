@@ -72,6 +72,14 @@ class MapViewController: UIViewController, MapDisplayLogic, KeyboardHandler {
         }
     }
 
+    func moveMapToPlace(_ place: Place) {
+        DispatchQueue.main.async {
+            let camera = MKMapCamera(lookingAtCenter: place.coordinate, fromDistance: 100000, pitch: 0, heading: 0)
+            self.mapView.setCamera(camera, animated: true)
+            self.mapView.selectAnnotation(place, animated: true)
+        }
+    }
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -117,6 +125,29 @@ extension MapViewController {
     }
 }
 
+extension MapViewController: UITableViewDataSource, UITableViewDelegate {
+    var places: [Place] {
+        return (mapView.annotations as? [Place] ?? [])
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PlaceCell.identifier) as? PlaceCell else {
+            fatalError()
+        }
+
+        cell.setCell(places[indexPath.row])
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return places.count
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        moveMapToPlace(places[indexPath.row])
+    }
+}
+
 extension MapViewController {
     private func setup() {
         let viewController = self
@@ -143,24 +174,5 @@ extension MapViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         mapView.removeAllAnnotations()
-    }
-}
-
-extension MapViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PlaceCell.identifier) as? PlaceCell else {
-            fatalError()
-        }
-
-        cell.setCell(places[indexPath.row])
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return places.count
-    }
-
-    var places: [Place] {
-        return (mapView.annotations as? [Place] ?? [])
     }
 }
