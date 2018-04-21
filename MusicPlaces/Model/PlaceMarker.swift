@@ -27,3 +27,13 @@ class PlaceMarker: MKMarkerAnnotationView {
         }
     }
 }
+
+extension MKAnnotation {
+    public var openedDateString: String {
+        guard let place = self as? Place, let year = place.lifeSpan?.begin else {
+            return "unknown"
+        }
+
+        return "Opened in \(year)"
+    }
+}

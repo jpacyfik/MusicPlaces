@@ -9,8 +9,12 @@
 import Foundation
 
 struct AppSettings {
+    // Request page size
     static var defaultRequestLimit: Int = 25
-    static let shouldRemoveAnnotationsAfterTime: Bool = true
-    static let shouldFilterPlacesByBeginDate: Bool = true
-    static let beginYearFilter: Int = 1990
+
+    // Enabling and disabling filtering recieved places by 'beginYearFilter' year and wipping out feature
+    static let shouldFilterPlacesByDateAndWipeOutAfterTime: Bool = true
+
+    // Reference date used in filtering. Useless when @up flag is disabled
+    static let beginYearFilter: Int = 1000
 }

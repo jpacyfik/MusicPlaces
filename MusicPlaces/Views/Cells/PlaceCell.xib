@@ -10,6 +10,7 @@
     </dependencies>
     <customFonts key="customFonts">
         <array key="AvenirNext.ttc">
+            <string>AvenirNext-Medium</string>
             <string>AvenirNext-Regular</string>
         </array>
     </customFonts>
@@ -32,18 +33,29 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoZ-03-wIB">
-                        <rect key="frame" x="15" y="18" width="220" height="19.5"/>
-                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="M1j-HR-X96">
+                        <rect key="frame" x="15" y="9.5" width="225" height="36"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMu-sB-heg">
+                                <rect key="frame" x="0.0" y="0.0" width="225" height="19.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Opened from 1920" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UoZ-03-wIB">
+                                <rect key="frame" x="0.0" y="19.5" width="225" height="16.5"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="UoZ-03-wIB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9tZ-Ob-gkJ"/>
-                    <constraint firstItem="UoZ-03-wIB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="KBN-wL-OVw"/>
-                    <constraint firstItem="epr-r7-Er5" firstAttribute="leading" secondItem="UoZ-03-wIB" secondAttribute="trailing" constant="10" id="nOw-sW-wBq"/>
+                    <constraint firstItem="epr-r7-Er5" firstAttribute="leading" secondItem="M1j-HR-X96" secondAttribute="trailing" constant="5" id="8PJ-aA-8sy"/>
+                    <constraint firstItem="M1j-HR-X96" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="BJ6-Ak-2AD"/>
+                    <constraint firstItem="M1j-HR-X96" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Qeo-wI-3WH"/>
                     <constraint firstItem="epr-r7-Er5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="o0Y-Io-MEm"/>
                     <constraint firstAttribute="trailing" secondItem="epr-r7-Er5" secondAttribute="trailing" constant="15" id="vtp-HY-QBx"/>
                 </constraints>
@@ -52,7 +64,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="distanceLabel" destination="epr-r7-Er5" id="zzi-HL-sdx"/>
-                <outlet property="nameLabel" destination="UoZ-03-wIB" id="r2j-vo-Vai"/>
+                <outlet property="nameLabel" destination="hMu-sB-heg" id="SEF-cA-UoC"/>
+                <outlet property="yearLabel" destination="UoZ-03-wIB" id="hxq-cO-UeQ"/>
             </connections>
             <point key="canvasLocation" x="34" y="59.5"/>
         </tableViewCell>

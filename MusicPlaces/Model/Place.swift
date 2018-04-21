@@ -13,6 +13,7 @@ final class Place: NSObject, Decodable, MKAnnotation {
     let address: String?
     let id: String
     let coordinate: CLLocationCoordinate2D
+    let lifeSpan: LifeSpan?
 
     var title: String? {
         return name
@@ -23,15 +24,47 @@ final class Place: NSObject, Decodable, MKAnnotation {
     }
 
     enum CodingKeys: String, CodingKey {
-        case id, address, name, coordinate = "coordinates"
+        case id, address, name, lifeSpan = "life-span", coordinate = "coordinates"
     }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        name = try container.decode(String.self, forKey: CodingKeys.name)
-        id = try container.decode(String.self, forKey: CodingKeys.id)
-        address = try container.decode(String.self, forKey: CodingKeys.address)
+        name = try container.decode(String.self, forKey: .name)
+        id = try container.decode(String.self, forKey: .id)
+        address = try container.decode(String.self, forKey: .address)
+        lifeSpan = try container.decode(LifeSpan.self, forKey: .lifeSpan)
         coordinate = try container.decode(CLLocationCoordinate2D.self, forKey: .coordinate)
     }
 }
 
+
+struct LifeSpan: Decodable {
+    let begin: Int
+    var lifeSpan: Int {
+        return (begin - AppSettings.beginYearFilter)
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case begin
+    }
+
+    public init(from decoder: Decoder) throws {
+        guard AppSettings.shouldFilterPlacesByDateAndWipeOutAfterTime else {
+            // No need to set cuz it's not going to be used.
+            // Moreover most of the places have nil 'life-span' dictionary, so we wil avoid unwanted throws (not-parsed objects)
+            self.begin = 0
+            return
+        }
+
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let begin = try container.decode(String.self, forKey: .begin)
+
+        guard let beginYear = Int(begin), beginYear >= AppSettings.beginYearFilter else {
+            let context = DecodingError.Context(codingPath: container.codingPath + [CodingKeys.begin],
+                                                debugDescription: "Could not parse begin to proper type")
+            throw DecodingError.dataCorrupted(context)
+        }
+
+        self.begin = beginYear
+    }
+}
