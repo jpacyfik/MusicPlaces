@@ -21,6 +21,7 @@ class MapViewController: UIViewController, MapDisplayLogic {
     @IBOutlet weak var bottomRowConstraint: NSLayoutConstraint!
     @IBOutlet weak var menuRow: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var myLocationButtonView: UIView!
 
     var interactor: MapBusinessLogic?
     var topContainerState: TopContainerState = .keyboardDisabled
@@ -37,10 +38,12 @@ class MapViewController: UIViewController, MapDisplayLogic {
 
     @IBAction func menuTapped(_ sender: UIButton) {
         changeMenuState()
-        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            self.topRowConstraint.constant = MapKeyboardInfo.constraintConstant(self.menuContainerState, top: self.topContainerState)
-            self.view.layoutIfNeeded()
-        })
+        animateToProperState()
+    }
+
+    @IBAction func myLocationTapped(_ sender: UIButton) {
+        let camera = MKMapCamera(lookingAtCenter: mapView.userLocation.coordinate, fromDistance: 10000, pitch: 0, heading: 0)
+        mapView.setCamera(camera, animated: true)
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -104,34 +107,40 @@ extension MapViewController {
         let isKeyboardEnabled = (topContainerState == .keyboardEnabled)
         topContainerState = isKeyboardEnabled ? .keyboardDisabled : .keyboardEnabled
     }
+
+    func animateToProperState() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                self.topRowConstraint.constant = MapKeyboardInfo.constraintConstant(self.menuContainerState, top: self.topContainerState)
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
 }
 
 // MARK: Menu TableView
 
 extension MapViewController: UITableViewDataSource, UITableViewDelegate {
-    var places: [Place] {
-        return (mapView.annotations as? [Place] ?? [])
-    }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PlaceCell.identifier) as? PlaceCell else {
             fatalError()
         }
 
-        cell.setCell(places[indexPath.row])
+        cell.setCell(mapView.annotations[indexPath.row])
         return cell
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return places.count
+        return mapView.annotations.count
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        moveMapToPlace(places[indexPath.row])
+        moveMapToPlace(mapView.annotations[indexPath.row])
     }
 
-    private func moveMapToPlace(_ place: Place) {
+    private func moveMapToPlace(_ place: MKAnnotation) {
         DispatchQueue.main.async {
+            self.dismissKeyboard()
             let camera = MKMapCamera(lookingAtCenter: place.coordinate, fromDistance: 100000, pitch: 0, heading: 0)
             self.mapView.setCamera(camera, animated: true)
             self.mapView.selectAnnotation(place, animated: true)
@@ -165,6 +174,8 @@ extension MapViewController {
         menuButton.setCorner(radius: 24)
         menuRow.setCorner(radius: 14)
         tableView.setCorner(radius: 14)
+        myLocationButtonView.setCorner(radius: 24)
+        myLocationButtonView.setShadow(shadowRadius: 10, shadowOpacity: 0.4)
         searchRow.setShadow(shadowRadius: 10, shadowOpacity: 0.4)
         menuRow.setShadow(shadowRadius: 10, shadowOpacity: 0.5)
     }

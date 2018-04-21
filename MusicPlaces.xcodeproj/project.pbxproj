@@ -31,6 +31,7 @@
 		3B4A1445208A124800ADA84D /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4A1444208A124800ADA84D /* PlaceMarker.swift */; };
 		3BE6EC88208A85B900400C72 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6EC86208A85B900400C72 /* PlaceCell.swift */; };
 		3BE6EC89208A85B900400C72 /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6EC87208A85B900400C72 /* PlaceCell.xib */; };
+		3BE6EC8D208AF26A00400C72 /* UserLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6EC8C208AF26A00400C72 /* UserLocationProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		3B4A1444208A124800ADA84D /* PlaceMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
 		3BE6EC86208A85B900400C72 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		3BE6EC87208A85B900400C72 /* PlaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCell.xib; sourceTree = "<group>"; };
+		3BE6EC8C208AF26A00400C72 /* UserLocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 				3B4A14382089B13E00ADA84D /* RequestURLFactory.swift */,
 				3B4A143C2089C61B00ADA84D /* Extensions.swift */,
 				3B4A143E2089D73F00ADA84D /* FailableDecodable.swift */,
+				3BE6EC8C208AF26A00400C72 /* UserLocationProvider.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				3B4A143F2089D73F00ADA84D /* FailableDecodable.swift in Sources */,
 				3B4A14182089AB0F00ADA84D /* MapWorker.swift in Sources */,
 				3B4A1445208A124800ADA84D /* PlaceMarker.swift in Sources */,
+				3BE6EC8D208AF26A00400C72 /* UserLocationProvider.swift in Sources */,
 				3B4A14392089B13E00ADA84D /* RequestURLFactory.swift in Sources */,
 				3B4A14412089D75F00ADA84D /* CLLocationCoordinate2D+Decodable.swift in Sources */,
 				3B4A141E2089AB6000ADA84D /* AppOperation.swift in Sources */,
