@@ -40,8 +40,8 @@ final class Place: NSObject, Decodable, MKAnnotation {
 
 struct LifeSpan: Decodable {
     let begin: Int
-    var lifeSpan: Int {
-        return (begin - AppSettings.beginYearFilter)
+    var lifeTime: Double {
+        return Double(begin - AppSettings.beginYearFilter)
     }
 
     enum CodingKeys: String, CodingKey {
@@ -49,7 +49,7 @@ struct LifeSpan: Decodable {
     }
 
     public init(from decoder: Decoder) throws {
-        guard AppSettings.shouldFilterPlacesByDateAndWipeOutAfterTime else {
+        guard AppSettings.shouldFilterPlacesByDateAndRemovedAfterTime else {
             // No need to set cuz it's not going to be used.
             // Moreover most of the places have nil 'life-span' dictionary, so we wil avoid unwanted throws (not-parsed objects)
             self.begin = 0

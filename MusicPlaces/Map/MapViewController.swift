@@ -10,6 +10,7 @@ import MapKit
 
 protocol MapDisplayLogic: class {
     func addAnotationsToMap(_ viewModel: Map.SearchPlaces.ViewModel)
+    func removeAnnotationFromMap(_ viewModel: Map.RemovePlace.ViewModel)
 }
 
 class MapViewController: UIViewController, MapDisplayLogic {
@@ -66,6 +67,13 @@ extension MapViewController {
                 self.mapView.removeAllAnnotations()
             }
             self.mapView.addAnnotations(viewModel.annotations)
+            self.tableView.reloadData()
+        }
+    }
+
+    func removeAnnotationFromMap(_ viewModel: Map.RemovePlace.ViewModel) {
+        DispatchQueue.main.async {
+            self.mapView.removeAnnotation(viewModel.annotation)
             self.tableView.reloadData()
         }
     }

@@ -17,7 +17,7 @@ class PlaceCell: UITableViewCell {
         nameLabel.text = annotation.title ?? ""
         distanceLabel.text = UserLocationProvider.calculateDistanceTo(annotation.coordinate)
 
-        yearLabel.isHidden = !AppSettings.shouldFilterPlacesByDateAndWipeOutAfterTime
+        yearLabel.isHidden = !AppSettings.shouldFilterPlacesByDateAndRemovedAfterTime
         yearLabel.text = annotation.openedDateString
     }
 }

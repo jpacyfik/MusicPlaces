@@ -8,8 +8,8 @@
 
 import MapKit
 
-enum Map {
-    enum SearchPlaces {
+struct Map {
+    struct SearchPlaces {
         struct Request {
             let searchPhrase: String
         }
@@ -22,6 +22,16 @@ enum Map {
         struct ViewModel {
             let shouldResetAnnotations: Bool
             let annotations: [MKAnnotation]
+        }
+    }
+
+    struct RemovePlace {
+        struct Response {
+            let place: Place
+        }
+
+        struct ViewModel {
+            let annotation: MKAnnotation
         }
     }
 }

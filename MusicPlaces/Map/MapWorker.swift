@@ -34,6 +34,12 @@ class MapWorker {
         }
     }
 
+    func scheduleRemoveOperation(_ place: Place, _ queue: OperationQueue, _ mapManager: MapDataManager) {
+        let removeOperation = RemovePlaceOperation(place, mapManager)
+        removeOperation.queuePriority = .high
+        queue.addOperation(removeOperation)
+    }
+
     func calculateOffsets(_ resultCount: Int) -> [Int] {
         var offsets: [Int] = []
 
