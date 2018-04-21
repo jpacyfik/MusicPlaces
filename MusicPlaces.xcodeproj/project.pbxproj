@@ -32,6 +32,7 @@
 		3BE6EC88208A85B900400C72 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6EC86208A85B900400C72 /* PlaceCell.swift */; };
 		3BE6EC89208A85B900400C72 /* PlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6EC87208A85B900400C72 /* PlaceCell.xib */; };
 		3BE6EC8D208AF26A00400C72 /* UserLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE6EC8C208AF26A00400C72 /* UserLocationProvider.swift */; };
+		3BE6EC8F208AFBAF00400C72 /* sampleResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BE6EC8E208AFBAF00400C72 /* sampleResponse.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		3BE6EC86208A85B900400C72 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		3BE6EC87208A85B900400C72 /* PlaceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCell.xib; sourceTree = "<group>"; };
 		3BE6EC8C208AF26A00400C72 /* UserLocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationProvider.swift; sourceTree = "<group>"; };
+		3BE6EC8E208AFBAF00400C72 /* sampleResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sampleResponse.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				3B4A13FE2089A81600ADA84D /* MusicPlacesTests.swift */,
 				3B4A14002089A81600ADA84D /* Info.plist */,
+				3BE6EC8E208AFBAF00400C72 /* sampleResponse.json */,
 			);
 			path = MusicPlacesTests;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BE6EC8F208AFBAF00400C72 /* sampleResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

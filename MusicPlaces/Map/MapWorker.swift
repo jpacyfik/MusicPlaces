@@ -34,7 +34,7 @@ class MapWorker {
         }
     }
 
-    private func calculateOffsets(_ resultCount: Int) -> [Int] {
+    func calculateOffsets(_ resultCount: Int) -> [Int] {
         var offsets: [Int] = []
 
         let numberOfOffsetsDobule = (Double(resultCount) / Double(AppSettings.defaultRequestLimit))

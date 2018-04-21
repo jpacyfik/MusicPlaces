@@ -175,6 +175,7 @@ extension MapViewController {
         menuRow.setCorner(radius: 14)
         tableView.setCorner(radius: 14)
         myLocationButtonView.setCorner(radius: 24)
+
         myLocationButtonView.setShadow(shadowRadius: 10, shadowOpacity: 0.4)
         searchRow.setShadow(shadowRadius: 10, shadowOpacity: 0.4)
         menuRow.setShadow(shadowRadius: 10, shadowOpacity: 0.5)

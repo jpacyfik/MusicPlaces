@@ -16,6 +16,7 @@ class PlaceMarker: MKMarkerAnnotationView {
 
             let label = UILabel()
             label.text = "MP"
+            label.textColor = UIColor.white
             label.setCorner(radius: 4)
             label.backgroundColor = label.tintColor
             label.sizeToFit()
