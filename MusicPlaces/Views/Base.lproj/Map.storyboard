@@ -141,7 +141,6 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="bottomConstraint" destination="6qL-MN-xPR" id="5jF-V7-d9S"/>
                         <outlet property="bottomRowConstraint" destination="y9c-5c-urT" id="3gZ-xH-Mbq"/>
                         <outlet property="inputTextField" destination="qeV-N1-RPu" id="Wyg-9G-IEW"/>
                         <outlet property="mapView" destination="Uqg-Di-itZ" id="tLK-kS-eIW"/>
@@ -149,6 +148,7 @@
                         <outlet property="menuRow" destination="O1R-Tc-y1g" id="93U-0x-bDT"/>
                         <outlet property="searchRow" destination="xeJ-ue-lxY" id="wbj-EH-U4q"/>
                         <outlet property="tableView" destination="z3q-V4-8hR" id="qam-W9-BgF"/>
+                        <outlet property="topRowConstraint" destination="6qL-MN-xPR" id="5jF-V7-d9S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

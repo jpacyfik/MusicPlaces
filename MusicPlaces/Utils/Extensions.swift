@@ -31,15 +31,14 @@ extension UIView {
     }
 }
 
-extension UIViewController {
+extension MapViewController {
     @objc func handleKeybaordNotification(notification: Notification) {
-        guard let handler = self as? KeyboardHandler else { fatalError("PROTOCOL ERRROR") }
         guard let userInfo = notification.userInfo else { return }
         guard let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue else { return }
         MapKeyboardInfo.keyboardHeight = keyboardFrame.height
 
-        handler.didChangeKeyboardVisibility()
-        handler.bottomConstraint.constant = MapKeyboardInfo.constraintConstant(handler.menuContainerState, top: handler.topContainerState)
+        self.didChangeKeyboardVisibility()
+        self.topRowConstraint.constant = MapKeyboardInfo.constraintConstant(self.menuContainerState, top: self.topContainerState)
         UIView.animate(withDuration: 0, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.view.layoutIfNeeded()
         })
@@ -48,30 +47,6 @@ extension UIViewController {
     func addKeyboardHandler() {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeybaordNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeybaordNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-}
-
-enum TopContainerState {
-    case keyboardEnabled
-    case keyboardDisabled
-}
-
-enum MenuContainerState {
-    case hidden
-    case shown
-}
-
-protocol KeyboardHandler {
-    weak var bottomConstraint: NSLayoutConstraint! { get set }
-    var topContainerState: TopContainerState { get set }
-    var menuContainerState: MenuContainerState { get set }
-
-    func didChangeKeyboardVisibility()
-}
-
-extension MKMapView {
-    func removeAllAnnotations() {
-        self.removeAnnotations(self.annotations)
     }
 }
 
@@ -89,6 +64,22 @@ struct MapKeyboardInfo {
         case (.hidden, .keyboardDisabled):
             return 0
         }
+    }
+}
+
+enum TopContainerState {
+    case keyboardEnabled
+    case keyboardDisabled
+}
+
+enum MenuContainerState {
+    case hidden
+    case shown
+}
+
+extension MKMapView {
+    func removeAllAnnotations() {
+        self.removeAnnotations(self.annotations)
     }
 }
 

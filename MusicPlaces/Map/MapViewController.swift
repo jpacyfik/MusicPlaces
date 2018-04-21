@@ -12,10 +12,10 @@ protocol MapDisplayLogic: class {
     func addAnotationsToMap(_ viewModel: Map.SearchPlaces.ViewModel)
 }
 
-class MapViewController: UIViewController, MapDisplayLogic, KeyboardHandler {
+class MapViewController: UIViewController, MapDisplayLogic {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var inputTextField: UITextField!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topRowConstraint: NSLayoutConstraint!
     @IBOutlet weak var menuButton: UIView!
     @IBOutlet weak var searchRow: UIView!
     @IBOutlet weak var bottomRowConstraint: NSLayoutConstraint!
@@ -35,30 +35,12 @@ class MapViewController: UIViewController, MapDisplayLogic, KeyboardHandler {
         configure()
     }
 
-    func configure() {
-        addDismissHandler()
-        setDelegateAndDataSource()
-        setUI()
-        addKeyboardHandler()
-        registerNibs()
-    }
-
     @IBAction func menuTapped(_ sender: UIButton) {
         changeMenuState()
         UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            self.bottomConstraint.constant = MapKeyboardInfo.constraintConstant(self.menuContainerState, top: self.topContainerState)
+            self.topRowConstraint.constant = MapKeyboardInfo.constraintConstant(self.menuContainerState, top: self.topContainerState)
             self.view.layoutIfNeeded()
         })
-    }
-
-    func addAnotationsToMap(_ viewModel: Map.SearchPlaces.ViewModel) {
-        DispatchQueue.main.async {
-            if viewModel.shouldResetAnnotations {
-                self.mapView.removeAllAnnotations()
-            }
-            self.mapView.addAnnotations(viewModel.annotations)
-            self.tableView.reloadData()
-        }
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -72,20 +54,32 @@ class MapViewController: UIViewController, MapDisplayLogic, KeyboardHandler {
     }
 }
 
+// MARK: MapView dataSource handler
+
+extension MapViewController {
+    func addAnotationsToMap(_ viewModel: Map.SearchPlaces.ViewModel) {
+        DispatchQueue.main.async {
+            if viewModel.shouldResetAnnotations {
+                self.mapView.removeAllAnnotations()
+            }
+            self.mapView.addAnnotations(viewModel.annotations)
+            self.tableView.reloadData()
+        }
+    }
+}
+
+// MARK: Input TextField handling
+
 extension MapViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        downloadLocations()
         dismissKeyboard()
+        let request = Map.SearchPlaces.Request(searchPhrase: inputTextField.textWithEmptyStringValidation)
+        interactor?.searchPlaces(request)
         return true
     }
 }
 
-extension MapViewController {
-    fileprivate func downloadLocations() {
-        let request = Map.SearchPlaces.Request(searchPhrase: inputTextField.textWithEmptyStringValidation)
-        interactor?.searchPlaces(request)
-    }
-}
+// MARK: Keyboard handling
 
 extension MapViewController {
     func addDismissHandler() {
@@ -111,6 +105,8 @@ extension MapViewController {
         topContainerState = isKeyboardEnabled ? .keyboardDisabled : .keyboardEnabled
     }
 }
+
+// MARK: Menu TableView
 
 extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     var places: [Place] {
@@ -143,6 +139,8 @@ extension MapViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// MARK: Configuration
+
 extension MapViewController {
     private func setup() {
         let viewController = self
@@ -154,12 +152,19 @@ extension MapViewController {
         interactor.configureQueue()
     }
 
+    func configure() {
+        addDismissHandler()
+        setDelegateAndDataSource()
+        setUI()
+        addKeyboardHandler()
+        registerNibs()
+    }
+
     func setUI() {
         searchRow.setCorner(radius: 24)
         menuButton.setCorner(radius: 24)
         menuRow.setCorner(radius: 14)
         tableView.setCorner(radius: 14)
-
         searchRow.setShadow(shadowRadius: 10, shadowOpacity: 0.4)
         menuRow.setShadow(shadowRadius: 10, shadowOpacity: 0.5)
     }
