@@ -119,15 +119,14 @@
 		3B4A13E82089A81500ADA84D /* MusicPlaces */ = {
 			isa = PBXGroup;
 			children = (
+				3B4A143A2089B1E700ADA84D /* AppSettings.swift */,
+				3B4A13E92089A81500ADA84D /* AppDelegate.swift */,
 				3B4A140C2089A87B00ADA84D /* Map */,
 				3B4A14092089A83800ADA84D /* Model */,
 				3B4A140A2089A84300ADA84D /* Operations */,
 				3B4A140B2089A85B00ADA84D /* Utils */,
 				3B4A14372089B06100ADA84D /* Views */,
-				3B4A13E92089A81500ADA84D /* AppDelegate.swift */,
-				3B4A143A2089B1E700ADA84D /* AppSettings.swift */,
-				3B4A13F02089A81500ADA84D /* Assets.xcassets */,
-				3B4A13F52089A81500ADA84D /* Info.plist */,
+				3BE6EC93208B5E0300400C72 /* Resources */,
 			);
 			path = MusicPlaces;
 			sourceTree = "<group>";
@@ -205,6 +204,15 @@
 				3BE6EC87208A85B900400C72 /* PlaceCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		3BE6EC93208B5E0300400C72 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3B4A13F02089A81500ADA84D /* Assets.xcassets */,
+				3B4A13F52089A81500ADA84D /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

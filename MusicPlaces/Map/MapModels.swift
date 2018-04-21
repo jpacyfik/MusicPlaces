@@ -2,7 +2,7 @@
 //  MapModels.swift
 //  MusicPlaces
 //
-//  Created by Jakub Pawelski on 20/04/2018.
+//  Created by Jakub Pawelski on 21/04/2018.
 //  Copyright (c) 2018 Jakub Pawelski. All rights reserved.
 //
 
