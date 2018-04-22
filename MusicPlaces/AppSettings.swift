@@ -12,9 +12,9 @@ struct AppSettings {
     // Request page size
     static var defaultRequestLimit: Int = 100
 
-    // Enabling and disabling filtering recieved places by 'beginYearFilter' year and wipping out feature
-    static let shouldFilterPlacesByDateAndRemovedAfterTime: Bool = false
+    // Enabling and disabling filtering recieved places by 'beginYearFilter' year and 'marker removing' feature
+    static var shouldFilterPlacesByDateAndRemovedAfterTime: Bool = false
 
     // Reference date used in filtering. Useless when @up flag is disabled
-    static let beginYearFilter: Int = 1990
+    static var beginYearFilter: Int = 1990
 }

@@ -10,18 +10,27 @@ import XCTest
 @testable import MusicPlaces
 
 class MusicPlacesTests: XCTestCase {
-
     struct MockedResponseInfo {
         static let keyword: String = "Music"
         static let count: Int = 712
         static let offset: Int = 0
         static let limit: Int = 5
-        static let numberOfPlaces: Int = 4 // (5-1) One has no coordinates so doesn't conform to our model rules
+        static var numberOfPlaces: Int {
+            if AppSettings.shouldFilterPlacesByDateAndRemovedAfterTime {
+                //Only one has beginYear >= 1990
+                return 1
+            } else {
+                //One has no coordinates so doesn't conform to our model rules
+                return 4
+            }
+        }
     }
 
     override func setUp() {
         super.setUp()
         AppSettings.defaultRequestLimit = 25
+        AppSettings.beginYearFilter = 1990
+        AppSettings.shouldFilterPlacesByDateAndRemovedAfterTime = true
     }
 
     override func tearDown() {
@@ -43,7 +52,30 @@ class MusicPlacesTests: XCTestCase {
     }
 
 
-    func testDecodingResponseDataToModel() {
+    func testDecodingResponseDataToModelFilteringDisabled() {
+        // Siable filtering
+        AppSettings.shouldFilterPlacesByDateAndRemovedAfterTime = false
+
+        let responseData = getJSONDataFromFile()
+        let decoder = JSONDecoder()
+        do {
+            let response = try decoder.decode(APIPlacesResponse.self, from: responseData)
+
+            XCTAssert(MockedResponseInfo.count == response.count)
+            XCTAssert(MockedResponseInfo.offset == response.offset)
+            XCTAssert(MockedResponseInfo.numberOfPlaces == response.places.count)
+        } catch {
+            XCTFail("Decoding failed")
+            return
+        }
+
+    }
+
+    func testDecodingResponseDataToModelFilteringEnabled() {
+        // Enable filtering
+        AppSettings.shouldFilterPlacesByDateAndRemovedAfterTime = true
+        AppSettings.beginYearFilter = 1990
+
         let responseData = getJSONDataFromFile()
         let decoder = JSONDecoder()
         do {
@@ -74,6 +106,7 @@ class MusicPlacesTests: XCTestCase {
         XCTAssert(generatedOffsets == correctOffsets)
     }
 }
+
 
 
 

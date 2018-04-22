@@ -27,7 +27,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>"We'd love to show you how you are from place you are looking for :)"</string>
+	<string>&quot;We&apos;d love to show you how far you are from place you are looking for :)&quot;</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
